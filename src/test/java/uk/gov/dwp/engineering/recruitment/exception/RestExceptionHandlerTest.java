@@ -17,7 +17,7 @@ public class RestExceptionHandlerTest {
         );
 
         assertEquals(HttpStatus.BAD_REQUEST.value(), problemDetail.getStatus());
-        assertEquals(RestExceptionHandler.INVALID_BOOKING_TITTLE, problemDetail.getTitle());
+        assertEquals(RestExceptionHandler.INVALID_BOOKING_TITLE, problemDetail.getTitle());
         assertEquals("A useful message", problemDetail.getDetail());
     }
 }

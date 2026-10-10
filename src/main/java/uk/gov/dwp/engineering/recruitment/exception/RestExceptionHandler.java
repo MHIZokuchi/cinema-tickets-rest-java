@@ -12,13 +12,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-  static final String INVALID_BOOKING_TITTLE = "Invalid booking !!";
+  static final String INVALID_BOOKING_TITLE = "Invalid booking";
 
   //A booking that breaks a business rule is a client error
   @ExceptionHandler(InvalidBookingException.class)
   protected ProblemDetail handleInvalidBookingException(final InvalidBookingException ex) {
     final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
-    problemDetail.setTitle(INVALID_BOOKING_TITTLE);
+    problemDetail.setTitle(INVALID_BOOKING_TITLE);
     problemDetail.setDetail(ex.getMessage());
     return problemDetail;
   }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import uk.gov.dwp.engineering.recruitment.api.BookingRequestDto;
 import uk.gov.dwp.engineering.recruitment.domain.Booking;
 import uk.gov.dwp.engineering.recruitment.domain.BookingConfirmation;
 
@@ -28,9 +29,10 @@ public class CinemaTicketsController {
    * @return ResponseEntity containing the result of the booking.
    */
   @PostMapping(value = "/bookings", consumes = "application/json", produces = "application/json")
-  public ResponseEntity<BookingConfirmation> makeBooking(@RequestBody Booking ticketBooking) {
-    return new ResponseEntity<>(cinemaTicketsService.purchaseTickets(ticketBooking.accountId(),
-        ticketBooking.ticketRequests()), HttpStatus.CREATED);
+  public ResponseEntity<BookingConfirmation> makeBooking(@RequestBody final BookingRequestDto request) {
+    final Booking booking = request.toBooking();
+    return new ResponseEntity<>(cinemaTicketsService.purchaseTickets(booking.accountId(),
+            booking.ticketRequests()), HttpStatus.CREATED);
   }
 
 }
