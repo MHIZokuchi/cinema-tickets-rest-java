@@ -22,6 +22,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.params.provider.Arguments.argumentSet;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -80,6 +81,16 @@ class CinemaTicketsControllerTest {
                 .andExpect(jsonPath("$.status").value(400))
                 .andExpect(jsonPath("$.title").value(INVALID_BOOKING_TITLE))
                 .andExpect(jsonPath("$.detail").value(expectedDetail));
+
+        verifyNoInteractions(paymentService, seatReservationService);
+    }
+
+    @Test
+    void givenIncorrectHttpMethodRequest_whenBookingsCalled_thenMethodNotAllowed() throws Exception {
+        mockMvc.perform(get(BOOKINGS_URL))
+                .andExpect(status().isMethodNotAllowed())
+                .andExpect(content().contentType(MediaType.APPLICATION_PROBLEM_JSON));
+
 
         verifyNoInteractions(paymentService, seatReservationService);
     }
