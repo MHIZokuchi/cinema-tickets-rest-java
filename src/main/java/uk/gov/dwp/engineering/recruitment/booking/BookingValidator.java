@@ -8,16 +8,16 @@ import uk.gov.dwp.engineering.recruitment.exception.InvalidBookingException;
 public class BookingValidator {
     static final  int MAX_TICKETS_PER_BOOKING = 25;
 
-    static final String INVALID_ACCOUNT_ID = "Account id must be greater than zero";
-    static final String NO_TICKETS_REQUESTED = "At least one ticket must be requested";
-    static final String NULL_TICKET_REQUEST = "Ticket requests must not be null";
-    static final String MISSING_TICKET_TYPE = "Each ticket request must have a ticket type";
-    static final String NEGATIVE_TICKET_COUNT = "Ticket counts must not be negative";
-    static final String TOO_MANY_TICKETS =
+    public static final String INVALID_ACCOUNT_ID = "Account id must be greater than zero";
+    public static final String NO_TICKETS_REQUESTED = "At least one ticket must be requested";
+    public static final String NULL_TICKET_REQUEST = "Ticket requests must not be null";
+    public static final String MISSING_TICKET_TYPE = "Each ticket request must have a ticket type";
+    public static final String NEGATIVE_TICKET_COUNT = "Ticket counts must not be negative";
+    public static final String TOO_MANY_TICKETS =
             "A maximum of %d tickets can be purchased at a time".formatted(MAX_TICKETS_PER_BOOKING);
-    static final String ADULT_REQUIRED =
+    public static final String ADULT_REQUIRED =
             "Child and infant tickets cannot be purchased without an adult ticket";
-    static final String TOO_MANY_INFANTS =
+    public static final String TOO_MANY_INFANTS =
             "Each infant must sit on an adult's lap, so infants cannot outnumber adults";
 
     //Validates the request is well formated

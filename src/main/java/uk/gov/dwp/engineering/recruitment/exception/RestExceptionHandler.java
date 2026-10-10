@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-  static final String INVALID_BOOKING_TITLE = "Invalid booking";
+  public static final String INVALID_BOOKING_TITLE = "Invalid booking";
 
   //A booking that breaks a business rule is a client error
   @ExceptionHandler(InvalidBookingException.class)
