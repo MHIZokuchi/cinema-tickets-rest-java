@@ -12,7 +12,6 @@ public class TicketPricing
     static final BigDecimal CHILD_PRICE = new BigDecimal("17.50");
     static final BigDecimal INFANT_PRICE = new BigDecimal("00.00");
 
-
     public BigDecimal ticketPriceOf(final TicketType ticketType){
         return switch (ticketType){
             case ADULT -> ADULT_PRICE;
